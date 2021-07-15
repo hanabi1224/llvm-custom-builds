@@ -2,15 +2,15 @@ $LLVM_VERSION = $args[0]
 $LLVM_REPO_URL = $args[1]
 
 if ([string]::IsNullOrEmpty($LLVM_REPO_URL)) {
-    $LLVM_REPO_URL = "https://github.com/llvm/llvm-project.git"
+	$LLVM_REPO_URL = "https://github.com/llvm/llvm-project.git"
 }
 
 if ([string]::IsNullOrEmpty($LLVM_VERSION)) {
-    Write-Output "Usage: $PSCommandPath <llvm-version> <llvm-repository-url>"
-    Write-Output ""
-    Write-Output "# Arguments"
-    Write-Output "  llvm-version         The name of a LLVM release branch without the 'release/' prefix"
-    Write-Output "  llvm-repository-url  The URL used to clone LLVM sources (default: https://github.com/llvm/llvm-project.git)"
+	Write-Output "Usage: $PSCommandPath <llvm-version> <llvm-repository-url>"
+	Write-Output ""
+	Write-Output "# Arguments"
+	Write-Output "  llvm-version         The name of a LLVM release branch without the 'release/' prefix"
+	Write-Output "  llvm-repository-url  The URL used to clone LLVM sources (default: https://github.com/llvm/llvm-project.git)"
 
 	exit 1
 }
@@ -27,6 +27,7 @@ git reset --hard origin/"release/$LLVM_VERSION"
 
 # Create a directory to build the project.
 New-Item -Path "build" -Force -ItemType "directory"
+Copy-Item -r include build
 Set-Location build
 
 # Create a directory to receive the complete installation.
