@@ -27,7 +27,7 @@ git reset --hard origin/"release/$LLVM_VERSION"
 
 # Create a directory to build the project.
 New-Item -Path "build" -Force -ItemType "directory"
-Copy-Item -r include build
+Copy-Item -r llvm/include build
 Set-Location build
 
 # Create a directory to receive the complete installation.
